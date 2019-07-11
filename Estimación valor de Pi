@@ -1,0 +1,28 @@
+Simulación montecarlo para estimar el valor de Pi
+#Genera una serie de puntos aleatorios entre los valores -1 y 1, se toma como centro el origen
+#del sistema cartesiano. Los puntos generados que se encuentren dentro de un círculo de diametro 1,
+#circunscrito dentro dentro de un cuadrado, cuyos ambos tienen como centro el origen del sistema cartesiano,
+#son útiles para la relación utilizada para estimar el valor de Pi
+#http://elfreneticoinformatico.com/montecarlo-en-python-como-aproximar-por-tu-cuenta-el-valor-del-numero-pi/
+#Autor: Larry Maximiliano Peña Ramos
+#Fecha de Creación: 13/06/2019
+#Última Modificación: 11/07/2019
+#Versión 1.0.2
+
+import random
+
+iteraciones_totales=100000           #cantidad de iteraciones que se desea que el programa realice
+
+iteracions_dentro_circulo=0          #contador con el número de puntos que cayeron dentro del círculo
+
+for i in range (0,iteraciones_totales):
+    x=(random.uniform(-1,1))         #coordenada "x" al azar del punto
+    y=(random.uniform(-1,1))         #coordenada "y" al azar del punto
+    radio= ((x) * (x)) + ((y) * (y)) #distancia al origen del punto generado (radio)
+    if radio<1:                      #comprobar si el punto está dentro de la circunferencia
+        iteracions_dentro_circulo=iteracions_dentro_circulo+1
+
+
+pi=(4*iteracions_dentro_circulo)/(iteraciones_totales) #Aproximación del valor de Pi
+
+print(pi)
